@@ -1,6 +1,6 @@
 from sys import exit
 import socket
-import os
+import os, time
 
 os.system("clear")
 os.system("python3 banner.py")
@@ -25,7 +25,7 @@ def validport(port):
 		return False
 while True:
 	ok = ["android","windows","osx","php","asp","aspx","bash","java","linux","perl","powershell","python","tomcat"]
-	x = input("Which Paltform/file type Do You Want To Attack?(if you Want See List Print 'help')")
+	x = input("Which Paltform/file type Do You Want To Attack?(if you Want See List Print 'help')").lower()
 	if x == "back" or x == "exit":
 		exit()
 	if x == "help":
@@ -46,7 +46,7 @@ while True:
 			break
 		
 		"""Find Local IP"""
-		os.system("python platform/myip.py")
+		os.system("python3 platform/myip.py")
 		f = open("ip","r")
 		ip = f.readline().replace("\n","")
 		f.close()
@@ -57,11 +57,12 @@ while True:
 			break
 			
 		"""Find An Closed Port"""
-		os.system("python platform/sp.py")
+		os.system("python3 platform/sp.py")
 		f = open("port.txt","r")
 		port = f.readline().replace("\n","")
 		f.close()
-		os.remove("port")
+		time.sleep(1)
+		os.remove("port.txt")
 			
 		if not validport(port):
 			print("Port Is Not Valid!")

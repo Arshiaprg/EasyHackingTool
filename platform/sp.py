@@ -13,6 +13,7 @@ random.seed()
 while oport(num):
 	num = random.randint(1000,5000)
 
+print("ok")
 f = open("port.txt","w")
 f.write(str(num))
 f.close()
